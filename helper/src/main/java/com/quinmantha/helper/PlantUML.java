@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringReader;
 
-public class PlantUML {
+public class PlantUML implements IPlantUML {
     /**
      * Make Image from given String.
      *
@@ -78,7 +78,9 @@ public class PlantUML {
         return sb.toString();
     }
 
-
+    public String random(){
+	return String.valueOf(System.currentTimeMillis() & 0xFFFFFF);
+    }
 
     static public void main(String[] args){
         if( args.length > 0 ) {

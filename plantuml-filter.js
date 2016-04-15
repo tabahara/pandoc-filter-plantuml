@@ -13,13 +13,26 @@ java.classpath.push(__dirname+'/lib/helper.jar');
 java.classpath.push(__dirname+'/lib/plantuml.jar');
 var plantUml = java.newInstanceSync("com.quinmantha.helper.PlantUML");
 
+function generateSuffix(){
+    return plantUml.randomSync();
+}
+
 var index = 1;
 function action(type,value,format,meta) {
     if( type === 'CodeBlock' ) {
 	if( value[0][1] == 'plantuml' ){
-	    var filename = "doc-files/file"+index+".svg";
+	    var suffix = generateSuffix();
+	    var filename = "doc-files/file"+suffix+".svg";
+	    
 	    index ++;
-	    plantUml.processSync(value[1],filename);
+	    
+	    var root =  meta['plantuml-root'];
+	    var prefx = "";
+	    if( root ){
+		prefix = root['c'] + '/';
+	    }
+	    plantUml.processSync(value[1],prefix+filename);
+
 	    return Para([Image([],[filename,""])]);
 	    // Para([Image([ALT],["doc-files/file.svg","CAPTION"])]);
 	}
@@ -27,4 +40,3 @@ function action(type,value,format,meta) {
 }
 
 pandoc.stdio(action);
-

@@ -1,3 +1,10 @@
+---
+title:
+- サンプル文章
+author:
+- Hiroki Tsukahara
+...
+
 # テスト文章 for my plantuml-filter
 
 ## 作例1
