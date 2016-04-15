@@ -27,7 +27,7 @@ function action(type,value,format,meta) {
 	    index ++;
 	    
 	    var root =  meta['plantuml-root'];
-	    var prefx = "";
+	    var prefix = "";
 	    if( root ){
 		prefix = root['c'] + '/';
 	    }
