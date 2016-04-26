@@ -25,13 +25,19 @@ public class PlantUML implements IPlantUML {
         final ByteArrayOutputStream os;
         try {
             File outFile = new File(filename);
+
+	    FileFormat outFormat = FileFormat.PNG;
+	    if( outFile.toPath().endsWith(".svg") ){
+		outFormat = FileFormat.SVG;
+	    }
+	    
             File parentFile = outFile.getParentFile();
             if( parentFile != null ){
                 parentFile.mkdirs();
             }
             OutputStream outputStream;
             outputStream = new FileOutputStream(outFile);
-            desc = reader.generateImage(outputStream, new FileFormatOption(FileFormat.SVG));
+            desc = reader.generateImage(outputStream, new FileFormatOption(outFormat));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

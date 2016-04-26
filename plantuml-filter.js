@@ -22,7 +22,7 @@ function action(type,value,format,meta) {
     if( type === 'CodeBlock' ) {
 	if( value[0][1] == 'plantuml' ){
 	    var suffix = generateSuffix();
-	    var filename = "doc-files/file"+suffix+".svg";
+	    var filename = "doc-files/file"+suffix+".png";
 	    
 	    index ++;
 	    
