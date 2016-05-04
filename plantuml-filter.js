@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var pandoc = require('my-pandoc-filter');
+var pandoc = require('pandoc-filter');
 var CodeBlock = pandoc.CodeBlock;
 var Para = pandoc.Para;
 var Image = pandoc.Image;
@@ -33,7 +33,7 @@ function action(type,value,format,meta) {
 	    }
 	    plantUml.processSync(value[1],prefix+filename);
 
-	    return Para([Image([],[filename,""])]);
+	    return Para([Image(["",[],[]],[],[filename,""])]);	    
 	    // Para([Image([ALT],["doc-files/file.svg","CAPTION"])]);
 	}
     }
