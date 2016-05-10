@@ -29,6 +29,8 @@ public class PlantUML implements IPlantUML {
 	    FileFormat outFormat = FileFormat.PNG;
 	    if( outFile.toPath().endsWith(".svg") ){
 		outFormat = FileFormat.SVG;
+	    } else if( outFile.toPath().endsWith(".eps") ){
+		outFormat = FileFormat.EPS;
 	    }
 	    
             File parentFile = outFile.getParentFile();
