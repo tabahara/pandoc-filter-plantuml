@@ -27,10 +27,16 @@ public class PlantUML implements IPlantUML {
             File outFile = new File(filename);
 
 	    FileFormat outFormat = FileFormat.PNG;
-	    if( outFile.toPath().endsWith(".svg") ){
+	    System.out.println("[" + outFile.toPath() + "]");
+	    String s = outFile.toPath().toString();
+	    if( s.endsWith(".svg") ){
+		// System.out.println("####SVG####");
 		outFormat = FileFormat.SVG;
-	    } else if( outFile.toPath().endsWith(".eps") ){
+	    } else if( s.endsWith(".eps") ){
+		// System.out.println("####EPS####");
 		outFormat = FileFormat.EPS;
+	    } else {
+		// System.out.println("####PNG####");
 	    }
 	    
             File parentFile = outFile.getParentFile();
@@ -93,7 +99,9 @@ public class PlantUML implements IPlantUML {
     static public void main(String[] args){
         if( args.length > 0 ) {
             PlantUML o = new PlantUML();
-            String desc = o.process(args[0], "dest.svg");
+            String desc;
+	    // desc = o.process(args[0], "dest.svg");
+	    desc = o.process(args[0], "dest.eps");
             System.out.println("desc:" + desc);
         } else {
             System.err.println("cmd 'string'");
