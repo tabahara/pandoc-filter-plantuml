@@ -27,16 +27,11 @@ public class PlantUML implements IPlantUML {
             File outFile = new File(filename);
 
 	    FileFormat outFormat = FileFormat.PNG;
-	    System.out.println("[" + outFile.toPath() + "]");
 	    String s = outFile.toPath().toString();
 	    if( s.endsWith(".svg") ){
-		// System.out.println("####SVG####");
 		outFormat = FileFormat.SVG;
 	    } else if( s.endsWith(".eps") ){
-		// System.out.println("####EPS####");
 		outFormat = FileFormat.EPS;
-	    } else {
-		// System.out.println("####PNG####");
 	    }
 	    
             File parentFile = outFile.getParentFile();
