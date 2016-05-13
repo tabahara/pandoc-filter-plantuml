@@ -49,22 +49,20 @@ public class PlantUML implements IPlantUML {
         return desc;
     }
 
+    /**
+     *  "\n" => CRLF
+     *  "\\" => '\'
+     */
     private String split(String inputString){
         StringBuffer sb = new StringBuffer();
-        int push = -1;
+
         StringReader sr = new StringReader(inputString);
         try {
             while(true) {
-                int c;
-                if (push != -1) {
-                    c = push;
-                    push = -1;
-                } else {
-                    c = sr.read();
-                    if (c == -1) {
-                        break;
-                    }
-                }
+                int c = sr.read();
+		if (c == -1) {
+		    break;
+		}
 
                 if (c == '\\') {
                     int c2 = sr.read();
@@ -74,8 +72,11 @@ public class PlantUML implements IPlantUML {
 
                     if (c2 == 'n') {
                         sb.append('\n');
+                    } else if(c2 == '\\') {
+			sb.append('\\');
                     } else {
-                        push = c2;
+			sb.append((char)c);			
+			sb.append((char)c2);			
                     }
                 } else {
                     sb.append((char)c);
