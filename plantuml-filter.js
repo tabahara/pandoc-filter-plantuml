@@ -33,7 +33,8 @@ function action(type,value,format,meta) {
 	    }
 	    plantUml.processSync(value[1],prefix+filename);
 
-	    return Para([Image(["",[],[]],[],[filename,""])]);	    
+	    return pandoc.Plain([Image(["",[],[]],[],[filename,""])]);
+	    //return Para([Image(["",[],[]],[],[filename,""])]);	    
 	    // Para([Image([ALT],["doc-files/file.svg","CAPTION"])]);
 	}
     }
