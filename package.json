@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "java": "^0.6.1",
+    "java": "^0.8.0",
     "pandoc-filter": "^0.1.4"
   }
 }
